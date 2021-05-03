@@ -1,6 +1,7 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using DesafioSoftPlan.Api.ApiServices;
 using DesafioSoftPlan.Api.Services;
+using Microsoft.AspNetCore.Http;
 
 namespace DesafioSoftPlan.Api.Controllers
 {
@@ -21,10 +22,22 @@ namespace DesafioSoftPlan.Api.Controllers
         [Route("calculajuros")]
         public ActionResult Juros(double valorInicial, double meses)
         {
-            var taxaDeJuros = _taxaDeJurosApiService.GetTaxaDeJuros();
-            var valorDosJurosCompostos = _jurosCompostosService.Calcular(valorInicial, taxaDeJuros, meses);
+            try
+            {
+                var taxaDeJuros = _taxaDeJurosApiService.GetTaxaDeJuros();
+                var valorDosJurosCompostos = _jurosCompostosService.Calcular(valorInicial, taxaDeJuros, meses);
 
-            return Ok(valorDosJurosCompostos);
+                return Ok(valorDosJurosCompostos);
+            }
+            catch (System.ApplicationException ex)
+            {
+                return StatusCode(StatusCodes.Status400BadRequest, ex.Message);
+            }
+            catch (System.Exception)
+            {
+                return StatusCode(StatusCodes.Status500InternalServerError, "A server error has occurred");
+            }
+            
         }
 
         [HttpGet]
