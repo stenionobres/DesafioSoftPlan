@@ -7,6 +7,8 @@ namespace DesafioSoftPlan.Api.Controllers
 {
     
     [ApiController]
+    [Consumes("application/json")]
+    [Produces("application/json")]
     public class CalculaJurosController : ControllerBase
     {
         private readonly TaxaDeJurosApiService _taxaDeJurosApiService;
@@ -20,6 +22,8 @@ namespace DesafioSoftPlan.Api.Controllers
 
         [HttpGet]
         [Route("calculajuros")]
+        [ProducesResponseType(StatusCodes.Status200OK)]
+        [ProducesResponseType(StatusCodes.Status400BadRequest)]
         public ActionResult Juros(double valorInicial, double meses)
         {
             try
@@ -42,6 +46,7 @@ namespace DesafioSoftPlan.Api.Controllers
 
         [HttpGet]
         [Route("showmethecode")]
+        [ProducesResponseType(StatusCodes.Status200OK)]
         public ActionResult Code()
         {
             return Ok("https://github.com/stenionobres/DesafioSoftPlan");
