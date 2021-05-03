@@ -21,7 +21,9 @@ namespace DesafioSoftPlan.Negocio
             if (_taxaDeJuros < 0) throw new ApplicationException("Taxa de juros deve ser maior igual a zero.");
             if (_tempoEmMeses < 0) throw new ApplicationException("Tempo em meses deve ser maior igual a zero.");
 
-            return _valorInicial;
+            var jurosCompostos = _valorInicial * Math.Pow(1 + _taxaDeJuros, _tempoEmMeses);
+
+            return Math.Round(jurosCompostos, 2);
         }
     }
 }

@@ -50,5 +50,14 @@ namespace DesafioSoftPlan.TestesUnitarios.Negocio
 
             Assert.That(exception.Message, Is.EqualTo("Tempo em meses deve ser maior igual a zero."));
         }
+
+        [Test]
+        public void DeveCalcularJurosCompostosIgualACentoECincoReaisEDezCentavos()
+        {
+            var jurosCompostos = new JurosCompostos(valorInicial: 100, taxaDeJuros: 0.01, tempoEmMeses: 5);
+            var valorEsperadoDeJuros = 105.1;
+
+            Assert.AreEqual(valorEsperadoDeJuros, jurosCompostos.calcular());
+        }
     }
 }
