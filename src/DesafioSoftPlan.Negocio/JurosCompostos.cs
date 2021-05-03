@@ -23,6 +23,11 @@ namespace DesafioSoftPlan.Negocio
 
             var jurosCompostos = _valorInicial * Math.Pow(1 + _taxaDeJuros, _tempoEmMeses);
 
+            return ObtemJurosCompostosTruncadoComDuasCasasDecimais(jurosCompostos);
+        }
+
+        private double ObtemJurosCompostosTruncadoComDuasCasasDecimais(double jurosCompostos)
+        {
             return Math.Truncate(100 * jurosCompostos) / 100;
         }
     }
