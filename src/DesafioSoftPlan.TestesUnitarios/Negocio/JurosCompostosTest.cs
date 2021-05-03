@@ -23,5 +23,14 @@ namespace DesafioSoftPlan.TestesUnitarios.Negocio
 
             Assert.AreEqual(0, jurosCompostos.calcular());
         }
+
+        [Test]
+        public void DeveCalcularJurosCompostosIgualAValorInicialParaTempoEmMesesIgualAZero()
+        {
+            var valorInicial = 100;
+            var jurosCompostos = new JurosCompostos(valorInicial: valorInicial, taxaDeJuros: 1, tempoEmMeses: 0);
+
+            Assert.AreEqual(valorInicial, jurosCompostos.calcular());
+        }
     }
 }
