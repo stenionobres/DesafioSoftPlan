@@ -59,5 +59,14 @@ namespace DesafioSoftPlan.TestesUnitarios.Negocio
 
             Assert.AreEqual(valorEsperadoDeJuros, jurosCompostos.calcular());
         }
+
+        [Test]
+        public void DeveCalcularJurosCompostosTruncadoSemArrendondamentoEmDuasCasasDecimais()
+        {
+            var jurosCompostos = new JurosCompostos(valorInicial: 100, taxaDeJuros: 0.01, tempoEmMeses: 8);
+            var valorEsperadoDeJuros = 108.28;
+
+            Assert.AreEqual(valorEsperadoDeJuros, jurosCompostos.calcular());
+        }
     }
 }
