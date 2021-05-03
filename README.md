@@ -2,6 +2,8 @@
 
 Aplicação ASP.NET Core criada com o principal objetivo de prover uma API básica de cálculo de juros compostos. O projeto contempla o uso de testes unitários, de integração e do Swagger para documentação.
 
+![](./resources/demonstracao.gif)
+
 ## Pré-requisitos
 
 O que precisa ser instalado na máquina para estender e depurar o projeto:
