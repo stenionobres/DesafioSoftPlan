@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using DesafioSoftPlan.Api.ApiServices;
+using DesafioSoftPlan.Api.Services;
 
 namespace DesafioSoftPlan.Api.Controllers
 {
@@ -8,10 +9,12 @@ namespace DesafioSoftPlan.Api.Controllers
     public class CalculaJurosController : ControllerBase
     {
         private readonly TaxaDeJurosApiService _taxaDeJurosApiService;
+        private readonly JurosCompostosService _jurosCompostosService;
 
-        public CalculaJurosController(TaxaDeJurosApiService taxaDeJurosApiService)
+        public CalculaJurosController(TaxaDeJurosApiService taxaDeJurosApiService, JurosCompostosService jurosCompostosService)
         {
             _taxaDeJurosApiService = taxaDeJurosApiService;
+            _jurosCompostosService = jurosCompostosService;
         }
 
         [HttpGet]
@@ -19,8 +22,9 @@ namespace DesafioSoftPlan.Api.Controllers
         public ActionResult Juros(double valorInicial, double meses)
         {
             var taxaDeJuros = _taxaDeJurosApiService.GetTaxaDeJuros();
+            var valorDosJurosCompostos = _jurosCompostosService.Calcular(valorInicial, taxaDeJuros, meses);
 
-            return Ok(105.1);
+            return Ok(valorDosJurosCompostos);
         }
 
         [HttpGet]

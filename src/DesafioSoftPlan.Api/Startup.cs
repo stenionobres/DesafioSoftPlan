@@ -1,5 +1,6 @@
 using System;
 using DesafioSoftPlan.Api.ApiServices;
+using DesafioSoftPlan.Api.Services;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
@@ -29,6 +30,7 @@ namespace DesafioSoftPlan.Api
             });
 
             services.AddTransient<TaxaDeJurosApiService>();
+            services.AddTransient<JurosCompostosService>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
