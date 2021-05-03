@@ -32,5 +32,14 @@ namespace DesafioSoftPlan.TestesUnitarios.Negocio
 
             Assert.AreEqual(valorInicial, jurosCompostos.calcular());
         }
+
+        [Test]
+        public void DeveLancarExcecaoParaTempoEmMesesMenorQueZero()
+        {
+            var jurosCompostos = new JurosCompostos(valorInicial: 20, taxaDeJuros: 0.5, tempoEmMeses: -1);
+            var exception = Assert.Throws<ApplicationException>(() => jurosCompostos.calcular());
+
+            Assert.That(exception.Message, Is.EqualTo("Tempo em meses deve ser maior igual a zero."));
+        }
     }
 }

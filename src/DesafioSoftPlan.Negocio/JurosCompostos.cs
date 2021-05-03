@@ -18,6 +18,7 @@ namespace DesafioSoftPlan.Negocio
         public double calcular()
         {
             if (_valorInicial < 0) throw new ApplicationException("Valor inicial deve ser maior igual a zero.");
+            if (_tempoEmMeses < 0) throw new ApplicationException("Tempo em meses deve ser maior igual a zero.");
 
             return _valorInicial;
         }
