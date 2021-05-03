@@ -25,6 +25,15 @@ namespace DesafioSoftPlan.TestesUnitarios.Negocio
         }
 
         [Test]
+        public void DeveLancarExcecaoParaTaxaDeJurosMenorQueZero()
+        {
+            var jurosCompostos = new JurosCompostos(valorInicial: 20, taxaDeJuros: -1, tempoEmMeses: 1);
+            var exception = Assert.Throws<ApplicationException>(() => jurosCompostos.calcular());
+
+            Assert.That(exception.Message, Is.EqualTo("Taxa de juros deve ser maior igual a zero."));
+        }
+
+        [Test]
         public void DeveCalcularJurosCompostosIgualAValorInicialParaTempoEmMesesIgualAZero()
         {
             var valorInicial = 100;
