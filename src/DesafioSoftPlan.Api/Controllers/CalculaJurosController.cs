@@ -7,6 +7,13 @@ namespace DesafioSoftPlan.Api.Controllers
     public class CalculaJurosController : ControllerBase
     {
         [HttpGet]
+        [Route("calculajuros")]
+        public ActionResult Juros(double valorInicial, double meses)
+        {
+            return Ok(105.1);
+        }
+
+        [HttpGet]
         [Route("showmethecode")]
         public ActionResult Code()
         {
